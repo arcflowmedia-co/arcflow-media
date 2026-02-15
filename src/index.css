@@ -1,0 +1,111 @@
+:root {
+  /* New Earth-Tone Luxury Palette from User Image */
+  /* #966548, #BF9675, #E7C6A2, #D3B392, #BFA081 */
+
+  --bg-primary: #966548;
+  /* Deepest Brown/Copper Base */
+  --bg-secondary: #8A5D42;
+  /* Slightly darker shift for sections */
+
+  --card-bg: #80563D;
+  /* Darker variant of primary for cards to sit ON top of primary */
+  --card-light: #BFA081;
+  /* Muted Khaki/Tan for highlight cards */
+
+  /* Text & Accents */
+  --text-primary: #FFFFFF;
+  /* White for readability on mid-tone background */
+  --text-secondary: #E7C6A2;
+  /* Desert Sand for subtitles/body */
+  --text-on-light: #4A2A16;
+  /* Dark brown for text on light cards */
+
+  --accent: #D3B392;
+  /* Tan accent */
+
+  /* Buttons */
+  --btn-primary: #E7C6A2;
+  /* Light Sand/Gold */
+  --btn-hover: #F2DDB8;
+  /* Lighter hover state */
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(74, 42, 22, 0.2);
+  --shadow-card: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+p {
+  line-height: 1.6;
+  color: var(--text-primary);
+  opacity: 0.9;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 3rem 1rem;
+  }
+
+  /* Fix H1 and content clipping on mobile */
+  .hero-container {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+
+  .hero-content {
+    padding-top: 180px !important;
+    justify-content: flex-start !important;
+    min-height: 100vh !important;
+  }
+
+  /* Ensure hero content has enough top padding on mobile */
+  body {
+    padding-top: 0;
+  }
+
+  /* Mobile typography adjustments */
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+  }
+}

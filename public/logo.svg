@@ -1,0 +1,27 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="arc_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E7CFA3" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Main Arc/A Shape -->
+  <path d="M40 160C40 160 60 40 100 40C140 40 160 160 160 160" stroke="url(#arc_gradient)" stroke-width="12" stroke-linecap="round" filter="url(#glow)" />
+  
+  <!-- Flow Element -->
+  <path d="M65 110H135" stroke="url(#arc_gradient)" stroke-width="8" stroke-linecap="round" opacity="0.8">
+    <animate attributeName="stroke-dasharray" from="0, 70" to="70, 0" dur="2s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- Secondary Arc -->
+  <path d="M20 170C20 170 50 10 100 10C150 10 180 170 180 170" stroke="url(#arc_gradient)" stroke-width="4" stroke-dasharray="10 15" opacity="0.3" />
+
+  <!-- Flowing Dots -->
+  <circle cx="40" cy="160" r="4" fill="#E7CFA3" />
+  <circle cx="160" cy="160" r="4" fill="#C5A059" />
+</svg>

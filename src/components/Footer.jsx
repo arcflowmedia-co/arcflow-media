@@ -12,9 +12,27 @@ export default function Footer() {
         <footer style={{ backgroundColor: "var(--bg-primary)", padding: "4rem 2rem", borderTop: "1px solid rgba(231, 207, 163, 0.1)" }}>
             <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
 
-                <div>
-                    <h3 style={{ fontSize: "1.5rem", color: "var(--text-primary)", marginBottom: "0.5rem" }}>ArcFlow Media</h3>
-                    <p style={{ color: "var(--text-secondary)", opacity: 0.6, fontSize: "0.9rem" }}>Premium AI Automation Systems</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <img
+                            src="/logo.svg"
+                            alt="ArcFlow Logo"
+                            style={{ height: "60px", width: "auto" }}
+                        />
+                        <span style={{
+                            fontSize: "1.8rem",
+                            fontWeight: "800",
+                            marginLeft: "10px",
+                            background: "linear-gradient(to right, #E7CFA3, #C5A059)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent"
+                        }}>
+                            ArcFlow Media
+                        </span>
+                    </div>
+                    <div>
+                        <p style={{ color: "var(--text-secondary)", opacity: 0.6, fontSize: "0.9rem" }}>Premium AI Automation Systems</p>
+                    </div>
                 </div>
 
                 <nav style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center" }}>

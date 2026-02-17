@@ -45,27 +45,27 @@ export default function Navbar() {
             }}>
                 {/* Logo */}
                 <div style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "800",
-                    color: "var(--text-primary)",
-                    letterSpacing: "-0.02em",
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.5rem"
-                }}>
-                    <div style={{
-                        width: "32px",
-                        height: "32px",
-                        backgroundColor: "var(--btn-primary)",
-                        borderRadius: "6px",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        color: "#4A2A16",
-                        fontSize: "1.2rem",
-                        fontWeight: "bold"
-                    }}>A</div>
-                    ArcFlow
+                    cursor: "pointer"
+                }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                    <img
+                        src="/logo.svg"
+                        alt="ArcFlow Logo"
+                        style={{ height: "60px", width: "auto" }}
+                    />
+                    <span style={{
+                        fontSize: "1.8rem",
+                        fontWeight: "800",
+                        color: "var(--text-primary)",
+                        letterSpacing: "-0.02em",
+                        marginLeft: "10px",
+                        background: "linear-gradient(to right, #E7CFA3, #C5A059)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent"
+                    }}>
+                        ArcFlow Media
+                    </span>
                 </div>
 
                 {/* Desktop Navigation Links */}

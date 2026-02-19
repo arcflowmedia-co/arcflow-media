@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 function InputSlider({ label, value, setValue, min, max, step, unit }) {
     return (
         <div>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem", fontWeight: "600", color: "#4A2A16" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem", fontWeight: "600", color: "var(--text-secondary)" }}>
                 <span>{label}</span>
-                <span style={{ color: "var(--btn-primary)" }}>
+                <span style={{ color: "var(--accent)" }}>
                     {unit === "$" ? "$" : ""}{value}{unit !== "$" ? unit : ""}
                 </span>
             </div>
@@ -16,7 +16,7 @@ function InputSlider({ label, value, setValue, min, max, step, unit }) {
                 step={step || 1}
                 value={value}
                 onChange={(e) => setValue(Number(e.target.value))}
-                style={{ width: "100%", accentColor: "var(--btn-primary)", cursor: "pointer" }}
+                style={{ width: "100%", accentColor: "#C06722", cursor: "pointer" }}
             />
         </div>
     )
@@ -31,61 +31,64 @@ export default function RoiCalculator() {
     const recoveredRevenue = (leads * (missedRate / 100)) * (closeRate / 100) * jobValue;
 
     return (
-        <section style={{ backgroundColor: "var(--bg-primary)", width: "100%" }}>
+        <section style={{ backgroundColor: "var(--bg-primary)", width: "100%", padding: "5rem 0", borderTop: "1px solid rgba(253, 185, 49, 0.1)" }}>
             <div className="section-container" style={{ textAlign: "center" }}>
-                <h2 style={{ fontSize: "clamp(1.75rem, 5vw, 2.5rem)", marginBottom: "2rem", color: "var(--text-primary)" }}>
+                <h2 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "3rem", color: "var(--text-primary)" }}>
                     See How Much Revenue You're Leaving On The Table
                 </h2>
 
                 <div style={{
-                    backgroundColor: "var(--card-light)",
-                    color: "var(--text-on-light)",
-                    padding: "clamp(1.5rem, 5vw, 3rem)",
-                    borderRadius: "20px",
-                    maxWidth: "900px",
+                    backgroundColor: "rgba(74, 42, 22, 0.2)",
+                    color: "white",
+                    padding: "clamp(2rem, 5vw, 4rem)",
+                    borderRadius: "30px",
+                    maxWidth: "1000px",
                     margin: "0 auto",
-                    boxShadow: "var(--shadow-soft)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)"
+                    boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
+                    border: "1px solid rgba(231, 207, 163, 0.1)",
+                    backdropFilter: "blur(10px)"
                 }}>
                     <div style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                        gap: "clamp(1.5rem, 4vw, 3rem)",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                        gap: "clamp(2rem, 5vw, 4rem)",
                         textAlign: "left"
                     }}>
-                        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
                             <InputSlider label="Monthly Leads" value={leads} setValue={setLeads} min={10} max={500} unit="" />
                             <InputSlider label="Current Close Rate" value={closeRate} setValue={setCloseRate} min={5} max={80} unit="%" />
                             <InputSlider label="Average Job Value" value={jobValue} setValue={setJobValue} min={100} max={5000} step={100} unit="$" />
                             <InputSlider label="Missed Call Rate" value={missedRate} setValue={setMissedRate} min={10} max={90} unit="%" />
                         </div>
 
-                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", paddingLeft: "2rem", borderLeft: "1px solid rgba(74, 42, 22, 0.1)" }}>
-                            <h3 style={{ fontSize: "1.5rem", color: "#4A2A16", marginBottom: "1rem" }}>Potential Monthly Revenue Increase</h3>
-                            <div style={{ fontSize: "3.5rem", fontWeight: "800", color: "#4A2A16", lineHeight: "1" }}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "2rem",
+                            backgroundColor: "rgba(74, 42, 22, 0.3)",
+                            borderRadius: "20px",
+                            border: "1px solid rgba(231, 207, 163, 0.1)"
+                        }}>
+                            <h3 style={{ fontSize: "1.4rem", color: "var(--text-secondary)", marginBottom: "1.5rem", textAlign: "center" }}>Potential Monthly Revenue Increase</h3>
+                            <div style={{ fontSize: "clamp(3rem, 8vw, 4.5rem)", fontWeight: "800", color: "#FFFFFF", lineHeight: "1" }}>
                                 ${Math.round(recoveredRevenue).toLocaleString()}
                             </div>
-                            <p style={{ marginTop: "1rem", color: "#4A2A16", opacity: 0.8, fontSize: "0.9rem" }}>
+                            <p style={{ marginTop: "1.5rem", color: "white", opacity: 0.8, fontSize: "1rem", textAlign: "center" }}>
                                 By automating follow-ups and answering instantly.
                             </p>
-                            <button style={{
-                                marginTop: "2rem",
-                                backgroundColor: "#4A2A16", // Dark button for contrast on light card
-                                color: "var(--text-secondary)", // Light text
-                                padding: "1rem 2rem",
-                                fontSize: "1rem",
-                                border: "none",
-                                borderRadius: "4px",
-                                fontWeight: "bold",
+                            <button className="shiny-cta" style={{
+                                marginTop: "2.5rem",
                                 width: "100%",
-                                cursor: "pointer",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.05em"
+                                border: "none"
                             }}
-                                onMouseOver={(e) => e.target.style.backgroundColor = "#5A3420"}
-                                onMouseOut={(e) => e.target.style.backgroundColor = "#4A2A16"}
+                                onClick={() => {
+                                    const element = document.getElementById('contact');
+                                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                                }}
                             >
-                                Calculate My Revenue Potential
+                                CALCULATE POTENTIAL
                             </button>
                         </div>
                     </div>

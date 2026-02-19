@@ -37,10 +37,11 @@ export default function Navbar() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 zIndex: 1000,
-                transition: "all 0.3s ease",
-                backgroundColor: "var(--bg-primary)",
-                borderBottom: "1px solid rgba(231, 198, 162, 0.1)",
-                boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.1)" : "none",
+                transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                backgroundColor: scrolled ? "rgba(26, 15, 0, 0.9)" : "transparent",
+                backdropFilter: scrolled ? "blur(12px)" : "none",
+                WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+                borderBottom: scrolled ? "1px solid rgba(255, 255, 255, 0.05)" : "1px solid transparent",
                 boxSizing: "border-box"
             }}>
                 {/* Logo */}
@@ -96,29 +97,11 @@ export default function Navbar() {
                         Contact
                     </a>
 
-                    <button style={{
-                        backgroundColor: "var(--btn-primary)",
-                        color: "#4A2A16",
-                        border: "none",
-                        padding: "0.8rem 1.5rem",
-                        borderRadius: "4px",
-                        fontWeight: "700",
-                        cursor: "pointer",
-                        transition: "all 0.3s ease",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                        fontSize: "0.9rem",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-                        whiteSpace: "nowrap"
+                    <button className="shiny-cta" style={{
+                        padding: "0.6rem 1.4rem",
+                        fontSize: "0.85rem",
+                        border: "none"
                     }}
-                        onMouseOver={(e) => {
-                            e.target.style.backgroundColor = "var(--btn-hover)";
-                            e.target.style.transform = "translateY(-1px)";
-                        }}
-                        onMouseOut={(e) => {
-                            e.target.style.backgroundColor = "var(--btn-primary)";
-                            e.target.style.transform = "translateY(0)";
-                        }}
                         onClick={() => scrollToSection('contact')}
                     >
                         Book Call
@@ -273,13 +256,14 @@ export default function Navbar() {
 }
 
 const linkStyle = {
-    color: "var(--text-primary)",
+    color: "#fff",
     textDecoration: "none",
-    fontSize: "1rem",
+    fontSize: "0.95rem",
     fontWeight: "500",
-    opacity: 0.9,
-    transition: "opacity 0.2s",
-    whiteSpace: "nowrap"
+    opacity: 0.8,
+    transition: "all 0.2s",
+    whiteSpace: "nowrap",
+    fontFamily: "'Manrope', sans-serif"
 };
 
 const mobileMenuLinkStyle = {

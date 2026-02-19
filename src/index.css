@@ -1,33 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  /* New Earth-Tone Luxury Palette from User Image */
-  /* #966548, #BF9675, #E7C6A2, #D3B392, #BFA081 */
-
-  --bg-primary: #966548;
-  /* Deepest Brown/Copper Base */
-  --bg-secondary: #8A5D42;
-  /* Slightly darker shift for sections */
-
-  --card-bg: #80563D;
-  /* Darker variant of primary for cards to sit ON top of primary */
-  --card-light: #BFA081;
-  /* Muted Khaki/Tan for highlight cards */
-
-  /* Text & Accents */
+  /* Requested Brown/Gold Premium Palette */
+  --bg-primary: #1A0F00;
+  --bg-secondary: #211402;
+  --card-bg: rgba(74, 42, 22, 0.4);
+  --accent: #FDB931;
+  /* Brilliant Gold */
   --text-primary: #FFFFFF;
-  /* White for readability on mid-tone background */
   --text-secondary: #E7C6A2;
-  /* Desert Sand for subtitles/body */
-  --text-on-light: #4A2A16;
-  /* Dark brown for text on light cards */
-
-  --accent: #D3B392;
-  /* Tan accent */
-
-  /* Buttons */
-  --btn-primary: #E7C6A2;
-  /* Light Sand/Gold */
-  --btn-hover: #F2DDB8;
-  /* Lighter hover state */
+  --text-on-light: #FDB931;
+  --btn-primary: #FDB931;
+  --btn-hover: #FFD272;
 
   /* Shadows */
   --shadow-soft: 0 10px 30px rgba(74, 42, 22, 0.2);
@@ -35,17 +19,82 @@
 }
 
 html,
-body,
-#root {
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100%;
-  background-color: var(--bg-primary);
+  background-color: transparent;
   color: var(--text-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+/* Shiny CTA Component Styles */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-spin {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.shiny-cta {
+  --gradient-angle: 0deg;
+  position: relative;
+  display: inline-block;
+  padding: 1.25rem 3rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  isolation: isolate;
+  transition: transform 0.3s ease;
+}
+
+.shiny-cta:hover {
+  transform: translateY(-2px);
+}
+
+.shiny-cta::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  /* Border thickness */
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--gradient-angle),
+      #C06722,
+      #FDB931,
+      #C06722,
+      #966548,
+      #C06722);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 3s linear infinite;
+  z-index: -1;
+}
+
+/* Gradient Blur for seamless Hero transitions */
+.gradient-blur {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(26, 15, 0, 0) 0%, rgba(26, 15, 0, 0) 30%, rgba(26, 15, 0, 0.6) 70%, #1A0F00 100%);
+  z-index: 1;
+}
+
+#root {
+  background-color: transparent;
 }
 
 h1,

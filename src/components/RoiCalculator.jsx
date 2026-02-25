@@ -57,7 +57,7 @@ export default function RoiCalculator() {
                         <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
                             <InputSlider label="Monthly Leads" value={leads} setValue={setLeads} min={10} max={500} unit="" />
                             <InputSlider label="Current Close Rate" value={closeRate} setValue={setCloseRate} min={5} max={80} unit="%" />
-                            <InputSlider label="Average Job Value" value={jobValue} setValue={setJobValue} min={100} max={5000} step={100} unit="$" />
+                            <InputSlider label="Average Job Value" value={jobValue} setValue={setJobValue} min={500} max={50000} step={100} unit="$" />
                             <InputSlider label="Missed Call Rate" value={missedRate} setValue={setMissedRate} min={10} max={90} unit="%" />
                         </div>
 

@@ -18,6 +18,12 @@
   --shadow-card: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -126,35 +132,151 @@ button {
   padding: 5rem 2rem;
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  padding: 0 8%;
+}
+
+.hero-content {
+  max-width: 780px;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-content h1 {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: white;
+  margin-bottom: 32px;
+  text-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content .accent-text {
+  background: linear-gradient(to right, #FDB931, #C06722);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero-content p {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 550px;
+  margin-bottom: 48px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
 @media (max-width: 768px) {
   .section-container {
     padding: 3rem 1rem;
   }
 
-  /* Fix H1 and content clipping on mobile */
   .hero-container {
-    height: auto !important;
-    min-height: 100vh !important;
-    overflow: visible !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 100px 20px 20px !important;
+    /* Fixed 20px sides for better fit */
+    text-align: left !important;
+    overflow: hidden !important;
   }
 
   .hero-content {
-    padding-top: 180px !important;
-    justify-content: flex-start !important;
-    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    text-align: left !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    /* Limit width to parent width minus padding */
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Ensure hero content has enough top padding on mobile */
-  body {
-    padding-top: 0;
+  .hero-content h1 {
+    font-size: clamp(2rem, 8vw, 2.6rem) !important;
+    /* Smaller to fit single-line words better */
+    text-align: left !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .hero-content .accent-text {
+    background: linear-gradient(to right, #FDB931, #C06722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem !important;
+    /* Slightly smaller for density */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    text-align: left !important;
+    margin-bottom: 24px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.4 !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .shiny-cta {
+    padding: 0.85rem 1.25rem !important;
+    /* Further reduced to ensure it fits on 320px screens */
+    font-size: 0.85rem !important;
+    /* Smaller text for a smaller button */
+    letter-spacing: 0.02em !important;
+    width: auto !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+    /* Allow internal wrapping if truly necessary */
   }
 
   /* Mobile typography adjustments */
   h1 {
-    font-size: clamp(2rem, 8vw, 3rem) !important;
+    font-size: clamp(2rem, 8vw, 2.6rem) !important;
+    text-align: left !important;
   }
 
   h2 {
-    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    text-align: center !important;
   }
 }

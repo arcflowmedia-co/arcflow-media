@@ -33,7 +33,7 @@ export default function AiExplanation() {
                     className="flow-chart-container">
                     {steps.map((step, index) => (
                         <React.Fragment key={index}>
-                            <div style={{
+                            <div className="flow-card" style={{
                                 background: "rgba(74, 42, 22, 0.4)",
                                 padding: "clamp(1rem, 2vw, 2rem)",
                                 borderRadius: "20px",
@@ -58,8 +58,8 @@ export default function AiExplanation() {
                                     e.currentTarget.style.borderColor = "rgba(231, 207, 163, 0.1)";
                                     e.currentTarget.style.backgroundColor = "rgba(74, 42, 22, 0.4)";
                                 }}>
-                                <div style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", marginBottom: "0.5rem" }}>{step.icon}</div>
-                                <div style={{ fontWeight: "700", color: "#FFFFFF", fontSize: "clamp(0.7rem, 1.2vw, 0.95rem)", textAlign: "center" }}>{step.label}</div>
+                                <div className="flow-icon" style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", marginBottom: "0.5rem" }}>{step.icon}</div>
+                                <div className="flow-label" style={{ fontWeight: "700", color: "#FFFFFF", fontSize: "clamp(0.7rem, 1.2vw, 0.95rem)", textAlign: "center" }}>{step.label}</div>
                             </div>
                             {index < steps.length - 1 && (
                                 <div style={{ fontSize: "1.5rem", color: "var(--text-secondary)", fontWeight: "bold", flex: "0 0 auto", opacity: 0.4, alignSelf: "center" }} className="flow-arrow">→</div>
@@ -69,17 +69,35 @@ export default function AiExplanation() {
                 </div>
             </div>
 
-            <style jsx>{`
+            <style dangerouslySetInnerHTML={{
+                __html: `
                 @media (max-width: 768px) {
                     .flow-chart-container {
                         flex-direction: column !important;
                         align-items: center !important;
+                        gap: 1.5rem !important;
+                    }
+                    .flow-card {
+                        width: 90% !important;
+                        max-width: 320px !important;
+                        height: 180px !important; /* Fixed height for better visual consistency on mobile */
+                        padding: 2rem !important;
+                        flex: none !important;
+                    }
+                    .flow-icon {
+                        font-size: 3.5rem !important;
+                        margin-bottom: 0.8rem !important;
+                    }
+                    .flow-label {
+                        font-size: 1.25rem !important;
                     }
                     .flow-arrow {
                         transform: rotate(90deg);
+                        margin: 0.5rem 0 !important;
+                        font-size: 2rem !important;
                     }
                 }
-            `}</style>
+            `}} />
         </section>
     );
 }
